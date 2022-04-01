@@ -13,19 +13,26 @@ function titleClickHandler(){
     activeLink.classList.remove('active');
   }
 
-  /* [IN PROGRESS] add class 'active' to the clicked link */
-
+  /* [DONE] add class 'active' to the clicked link */
+  const clickedElement = this; 
   console.log('clickedElement:', clickedElement);
 
-  const clickedElement = this; 
-  
-  clickedElement.add('active');
+
+  clickedElement.classList.add('active');
 
   /* [DONE] remove class 'active' from all articles */
 
-  /* get 'href' attribute from the clicked link */
+  /* [IN PROGRESS] get 'href' attribute from the clicked link */
 
-  /* find the correct article using the selector (value of 'href' attribute) */
+  const articleSelector = href;
+  href = clickedElement.getAttribute('#article-1 #article-2 #article-3 #article-4 #article-5 #article-6 #article-7 #article-8 #article-9 #article-10');
+
+
+
+  /* [IN PROGRESS] find the correct article using the selector (value of 'href' attribute) */
+
+  const targetArticle = querySelector;
+  
 
   /* add class 'active' to the correct article */
 }
