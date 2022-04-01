@@ -24,15 +24,19 @@ function titleClickHandler(){
 
   /* [IN PROGRESS] get 'href' attribute from the clicked link */
 
-  const articleSelector = href;
-  href = clickedElement.getAttribute('#article-1 #article-2 #article-3 #article-4 #article-5 #article-6 #article-7 #article-8 #article-9 #article-10');
+  const href = clickedElement.getAttribute('href');
+  // const articleSelector = href;
+  // #article-1 #article-2
 
 
+ const articleId = href.replace('#', '');
+ console.log(articleId);
 
   /* [IN PROGRESS] find the correct article using the selector (value of 'href' attribute) */
 
-  const targetArticle = querySelector;
-  
+  const targetArticle = document.querySelector('.post[id="'+ articleId + '"');
+  console.log(targetArticle);
+
 
   /* add class 'active' to the correct article */
 }
