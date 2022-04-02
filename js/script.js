@@ -22,7 +22,7 @@ function titleClickHandler(){
 
   /* [DONE] remove class 'active' from all articles */
 
-  /* [IN PROGRESS] get 'href' attribute from the clicked link */
+  /* [DONE] get 'href' attribute from the clicked link */
 
   const href = clickedElement.getAttribute('href');
   // const articleSelector = href;
@@ -32,14 +32,17 @@ function titleClickHandler(){
  const articleId = href.replace('#', '');
  console.log(articleId);
 
-  /* [IN PROGRESS] find the correct article using the selector (value of 'href' attribute) */
+  /* [DONE] find the correct article using the selector (value of 'href' attribute) */
 
-  const targetArticle = document.querySelector('.post[id="'+ articleId + '"');
+  const targetArticle = document.querySelector('.post[id="'+ articleId + '"]');
   console.log(targetArticle);
 
 
   /* add class 'active' to the correct article */
+  targetArticle.classList.add('active');
+
 }
+
 
 const links = document.querySelectorAll('.titles a');
 
