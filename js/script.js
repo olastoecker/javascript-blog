@@ -21,7 +21,12 @@ function titleClickHandler(){
   clickedElement.classList.add('active');
 
   /* [DONE] remove class 'active' from all articles */
+ 
+  const activeArticles = document.querySelectorAll('.posts');
 
+  for(let activeArticle of activeArticles){
+    activeArticle.classList.remove('active');
+  }
   /* [DONE] get 'href' attribute from the clicked link */
 
   const href = clickedElement.getAttribute('href');
@@ -38,7 +43,7 @@ function titleClickHandler(){
   console.log(targetArticle);
 
 
-  /* add class 'active' to the correct article */
+  /* [DONE] add class 'active' to the correct article */
   targetArticle.classList.add('active');
 
 }
