@@ -58,23 +58,23 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles';
 
-function GenerateTitleLinks(){
+function generateTitleLinks(){
 console.log(generateTitleLinks);
 
     /* remove contents of titleList */
-    const titleList = document.querySelector('.innerHTML = ''', optTitleSelector);
+    const titleList = document.querySelector('.post-title').innerHTML = '';
     function clearMessages(){
       document.getElementById('messages').innerHTML = '';
     }
     /* for each article */
-    const articles = '.titles';
+    const articles = '.post';
+
+    let html = '';
+
     for(let article of articles){
-      article.addEventListener('.post');
-    }
     /* get the article id */
-    const articleId = clickedElement.getAttribute('id');
+    const articleId = article.getAttribute('id'); //wyrzuca blad cokolwiek nie wstawie w msc articles, nie kumam co tu powinno byc //
     /* find the title element */
-    
     /* get the title from the title element */
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
     /* create HTML of the link */
@@ -82,6 +82,11 @@ console.log(generateTitleLinks);
     console.log(linkHTML);
     /* insert link into titleList */
     titleList.insertAdjacentHTML(linkHTML);
+    
+    }
+    console.log(html);
+    
+    
 }
 
 generateTitleLinks();
