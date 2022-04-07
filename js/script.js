@@ -34,8 +34,8 @@ function titleClickHandler(){
   // #article-1 #article-2
 
 
- const articleId = href.replace('#', '');
- console.log(articleId);
+  const articleId = href.replace('#', '');
+  console.log(articleId);
 
   /* [DONE] find the correct article using the selector (value of 'href' attribute) */
 
@@ -59,19 +59,19 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles';
 
 function generateTitleLinks(){
-console.log(generateTitleLinks);
+  console.log(generateTitleLinks);
 
-    /* remove contents of titleList */
-    const titleList = document.querySelector('.post-title').innerHTML = '';
-    function clearMessages(){
-      document.getElementById('messages').innerHTML = '';
-    }
-    /* for each article */
-    const articles = '.post';
+  /* remove contents of titleList */
+  const titleList = document.querySelector('.post-title').innerHTML = '';
+  function clearMessages(){
+    document.getElementById('messages').innerHTML = '';
+  }
+  /* for each article */
+  const articles = '.post';
 
-    let html = '';
+  let html = '';
 
-    for(let article of articles){
+  for(let article of articles){
     /* get the article id */
     const articleId = article.getAttribute('id'); //wyrzuca blad cokolwiek nie wstawie w msc articles, nie kumam co tu powinno byc //
     /* find the title element */
@@ -83,8 +83,8 @@ console.log(generateTitleLinks);
     /* insert link into titleList */
     titleList.insertAdjacentHTML(linkHTML);
     
-    }
-    console.log(html);
+  }
+  console.log(html);
     
     
 }
