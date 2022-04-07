@@ -1,6 +1,6 @@
 'use strict';
 
-function titleClickHandler(){
+function titleClickHandler(event){
   // console.log('Link was clicked!');
   // console.log(event);
   event.preventDefault();
@@ -71,7 +71,7 @@ function generateTitleLinks(){
 
   for(let article of articles){
     /* get the article id */
-    const articleId = article.getAttribute('id'); //wyrzuca blad cokolwiek nie wstawie w msc articles, nie kumam co tu powinno byc //
+    const articleId = article.getAttribute('id');
     /* find the title element */
     /* get the title from the title element */
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
