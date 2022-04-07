@@ -14,14 +14,14 @@ function titleClickHandler(){
   }
 
   /* [DONE] add class 'active' to the clicked link */
-  const clickedElement = this; 
+  const clickedElement = this;
   console.log('clickedElement:', clickedElement);
 
 
   clickedElement.classList.add('active');
 
   /* [DONE] remove class 'active' from all articles */
- 
+
   const activeArticles = document.querySelectorAll('.posts');
 
   for(let activeArticle of activeArticles){
@@ -82,11 +82,11 @@ function generateTitleLinks(){
     console.log(linkHTML);
     /* insert link into titleList */
     titleList.insertAdjacentHTML(linkHTML);
-    
+
   }
   console.log(html);
-    
-    
+
+
 }
 
 generateTitleLinks();
