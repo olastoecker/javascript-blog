@@ -124,3 +124,29 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+/* Tags */
+
+.tag-size-1 {
+  font-size: 25px;
+  color:darkcyan;
+}
+
+.tag-size-2 {
+  font-size: 25px;
+  color:rgb(3, 90, 90);
+}
+
+.tag-size-3 {
+  font-size: 30px;
+  color:darkcyan;
+}
+
+.tag-size-5 {
+  font-size: 35px;
+  color:rgb(67, 196, 196);
+}
+
+.post-tags ul{
+  display: inline-block;
+}

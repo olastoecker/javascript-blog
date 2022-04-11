@@ -55,7 +55,8 @@ const optArticleSelector = '.post',
   optArticleAuthorSelector = 'post-author',
   optTagsListSelector = '.tags.list',
   optCloudClassCount = '5',
-  optCloudClassPrefix = 'tag-size-';
+  optCloudClassPrefix = 'tag-size-',
+  optAuthorsListSelector = '.authors.list';
 
 function generateTitleLinks(customSelector = ''){
 
@@ -91,7 +92,7 @@ function generateTitleLinks(customSelector = ''){
 function calculateTagsParams(tags){
   const params = {max: '0', min: '999999'};
   for(let tag in tags){
-    console.log(tag + ' is used ' + tags[tag] + ' times');
+    // console.log(tag + ' is used ' + tags[tag] + ' times');
     if(tags[tag] > params.max){
       params.max = tags[tag];
     }
@@ -151,7 +152,6 @@ function generateTags(){
   }
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector(optTagsListSelector);
-
   const tagsParams = calculateTagsParams(allTags);
   console.log('tagsParams:', tagsParams);
 
@@ -212,8 +212,33 @@ function addClickListenersToTags(){
   }
 }
 
+function calculateAuthorsParams(authors){
+  const authorsParams = {max: '0', min: '999999'};
+  for(let author in authors){
+    console.log(author + ' is used ' + authors[author] + ' times');
+    if(authors[author] > authorsParams.max){
+      authorsParams.max = authors[author];
+    }
+    if(authors[author] < authorsParams.min){
+      authorsParams.min = authors[author];
+    }
+  }
+  return authorsParams;
+}
+
+/* czy to ponizej w ogole jest potrzebne czy mnie nieco ponioslo? */
+
+function calculateAuthorsClass(count, params){
+  const normalizedCount = count - params.min;
+  const normalizedMax = params.max - params.min;
+  const percentage = normalizedCount / normalizedMax;
+  const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
+  return optCloudClassPrefix + classNumber;
+}
 
 function generateAuthors(){
+  /* [NEW] create a new variable allAuthors with an empty object */
+  let allAuthors = {};
   /* find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
   /* START LOOP: for every article: */
@@ -224,14 +249,34 @@ function generateAuthors(){
     /* make html variable with empty string */
     let html = '';
     /* get authors from data-author attribute */
-    const articleAuthors = article.getAttribute('data-author');
+    const author = article.getAttribute('data-author');
     /* generate link */
-    let linkHTMLAuthor = '<li><a href="#author-' + articleAuthors + '">' + articleAuthors + '</a></li>';
+    let linkHTMLAuthor = '<li><a href="#author-' + author + '">' + author + '</a></li>';
     /* insert HTML */
     html = html + linkHTMLAuthor;
-    /* insert HTML of all the links into the tags wrapper */
-    authorWrapper.innerHTML = html;
-    /* END LOOP: for every author: */
+    /* [NEW] check if this link is NOT already in allAuthors */
+    if(!allAuthors.hasOwnProperty(author)){
+      /* [NEW] add author to allAuthors object */
+      allAuthors[author] = 1;
+    } else {
+      allAuthors[author]++;
+    }
+    /* END LOOP: for every article: */
+  }
+  /* insert HTML of all the links into the tags wrapper */
+  authorWrapper.innerHTML = html;
+  /* [NEW] find list of authors in right column */
+  const authorsList = document.querySelector(optAuthorsListSelector);
+  const authorsParams = calculateAuthorsParams(allAuthors);
+  console.log('authorsParams:', authorsParams);
+  /* [NEW] create variable for all links HTML code */
+  let allAuthorsHTML = '';
+  /* [NEW] start LOOP for each author in allAuthors */
+  for (let author in allAuthors){
+  /* [NEW] generate HTML and add to allAuthorsHTML */
+    const linkAuthorsHTML = '<li>' + calculateAuthorsClass(allAuthors[author], authorsParams) + '</li>';
+    allAuthorsHTML +- linkAuthorsHTML;
+    console.log('linkAuthorsHTML:', linkAuthorsHTML);
   }
 }
 
