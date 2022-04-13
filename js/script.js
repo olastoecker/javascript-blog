@@ -52,7 +52,7 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
-  optArticleAuthorSelector = 'post-author',
+  optArticleAuthorSelector = '.post-author',
   optTagsListSelector = '.tags.list',
   optCloudClassCount = '5',
   optCloudClassPrefix = 'tag-size-',
@@ -67,7 +67,7 @@ function generateTitleLinks(customSelector = ''){
   /* for each article */
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
-  let html = '';
+  // let html = '';
 
   for(let article of articles){
     /* get the article id */
@@ -262,9 +262,10 @@ function generateAuthors(){
       allAuthors[author]++;
     }
     /* END LOOP: for every article: */
+    authorWrapper.innerHTML = html;
   }
   /* insert HTML of all the links into the tags wrapper */
-  authorWrapper.innerHTML = html;
+
   /* [NEW] find list of authors in right column */
   const authorsList = document.querySelector(optAuthorsListSelector);
   const authorsParams = calculateAuthorsParams(allAuthors);
@@ -278,6 +279,8 @@ function generateAuthors(){
     allAuthorsHTML +- linkAuthorsHTML;
     console.log('linkAuthorsHTML:', linkAuthorsHTML);
   }
+  /* [NEW] add html to authorsList */
+  authorsList.innerHTML = allAuthorsHTML;
 }
 
 function authorClickHandler(event){
