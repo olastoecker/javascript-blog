@@ -66,7 +66,7 @@ function generateTitleLinks(customSelector = ''){
 
   /* for each article */
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
-
+  console.log(optArticleSelector + customSelector);
   // let html = '';
 
   for(let article of articles){
@@ -122,7 +122,7 @@ function generateTags(){
     /* find tags wrapper */
     const tagsWrapper = article.querySelector(optArticleTagsSelector);
     /* make html variable with empty string */
-    let html = '';
+    // let html = '';
     /* get tags from data-tags attribute */
     const articleTags = article.getAttribute('data-tags');
     // console.log(articleTags);
@@ -135,8 +135,8 @@ function generateTags(){
       /* generate HTML of the link */
       let linkHTMLTag = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
       /* add generated code to html variable */
-      // html.insertAdjacentHTML('beforeend', linkHTMLTag); // jak uzyc adjacentHTML zamiast tego co ponizej, zeby dzialalo? //
-      html = html + linkHTMLTag;
+      tagsWrapper.insertAdjacentHTML('beforeend', linkHTMLTag); //
+      // html = html + linkHTMLTag;
       /* [NEW] check if this link is NOT already in allTags */
       if(!allTags.hasOwnProperty(tag)){
       /* [NEW] add tag to allTags object */
@@ -147,7 +147,7 @@ function generateTags(){
       /* END LOOP: for each tag */
     }
     /* insert HTML of all the links into the tags wrapper */
-    tagsWrapper.innerHTML = html;
+    // tagsWrapper.innerHTML = html;
     /* END LOOP: for every article: */
   }
   /* [NEW] find list of tags in right column */
@@ -160,8 +160,9 @@ function generateTags(){
 
   /* [NEW] START LOOP: for each tag in allTags: */
   for(let tag in allTags){
-    /* [NEW] generate code of a link and add it to a allTagsHTML */
-    const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParams) + '</li>';
+    /* [NEW] generate code of a link and add it to a allTagsHTML
+    chce osiagnac <li><a href="#tag-cat" class="tag-size-3">cat</a></li> */
+    const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="'+ calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a></li>';
     allTagsHTML += tagLinkHTML;
     console.log('tagLinkHTML:', tagLinkHTML);
   }
@@ -226,8 +227,6 @@ function calculateAuthorsParams(authors){
   return authorsParams;
 }
 
-/* czy to ponizej w ogole jest potrzebne czy mnie nieco ponioslo? */
-
 function calculateAuthorsClass(count, params){
   const normalizedCount = count - params.min;
   const normalizedMax = params.max - params.min;
@@ -268,6 +267,7 @@ function generateAuthors(){
 
   /* [NEW] find list of authors in right column */
   const authorsList = document.querySelector(optAuthorsListSelector);
+  console.log(authorsList);
   const authorsParams = calculateAuthorsParams(allAuthors);
   console.log('authorsParams:', authorsParams);
   /* [NEW] create variable for all links HTML code */
@@ -275,8 +275,9 @@ function generateAuthors(){
   /* [NEW] start LOOP for each author in allAuthors */
   for (let author in allAuthors){
   /* [NEW] generate HTML and add to allAuthorsHTML */
-    const linkAuthorsHTML = '<li>' + calculateAuthorsClass(allAuthors[author], authorsParams) + '</li>';
-    allAuthorsHTML +- linkAuthorsHTML;
+
+    let linkAuthorsHTML = '<li><a href="#author-' + author + '" class="' + calculateAuthorsClass (allAuthors[author], authorsParams) + '">' + author + '</a></li>';
+    allAuthorsHTML += linkAuthorsHTML;
     console.log('linkAuthorsHTML:', linkAuthorsHTML);
   }
   /* [NEW] add html to authorsList */
