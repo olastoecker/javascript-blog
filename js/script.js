@@ -73,7 +73,7 @@ function generateTitleLinks(customSelector = ''){
 
   /* for each article */
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
-  console.log(optArticleSelector + customSelector);
+  // console.log(optArticleSelector + customSelector);
   // let html = '';
 
   for(let article of articles){
@@ -162,7 +162,7 @@ function generateTags(){
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector(optTagsListSelector);
   const tagsParams = calculateTagsParams(allTags);
-  // console.log('tagsParams:', tagsParams);
+  console.log('tagsParams:', tagsParams);
 
   /* [NEW] create variable for all links HTML code */
   const allTagsData = {tags: []};
@@ -230,7 +230,7 @@ function addClickListenersToTags(){
 function calculateAuthorsParams(authors){
   const authorsParams = {max: '0', min: '999999'};
   for(let author in authors){
-    console.log(author + ' is used ' + authors[author] + ' times');
+    // console.log(author + ' is used ' + authors[author] + ' times');
     if(authors[author] > authorsParams.max){
       authorsParams.max = authors[author];
     }
@@ -291,13 +291,13 @@ function generateAuthors(){
   for (let author in allAuthors){
   /* [NEW] generate HTML and add to allAuthorsHTML */
     // const linkAuthorsHTML = '<li>' + calculateAuthorsClass(allAuthors[author], authorsParams) + '</li>';
-    let linkAuthorsHTML = '<li><a href="#author-' + author + '" class="' + calculateAuthorsClass (allAuthors[author], authorsParams) + '">' + author + '</a></li>';
+    // let linkAuthorsHTML = '<li><a href="#author-' + author + '" class="' + calculateAuthorsClass (allAuthors[author], authorsParams) + '">' + author + '</a></li>';
     allAuthorsData.authors.push({
       author: author,
       count: allAuthors[author],
       className: calculateAuthorsClass(allAuthors[author], authorsParams)
     });
-    console.log('linkAuthorsHTML:', linkAuthorsHTML);
+    // console.log('linkAuthorsHTML:', linkAuthorsHTML);
   }
   /* [NEW] add html to authorsList */
   authorsList.innerHTML = templates.authorCloudLink(allAuthorsData);
